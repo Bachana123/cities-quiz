@@ -19,7 +19,7 @@
       <span :class="[ distanceCheck ? 'text-green-600' : 'text-red-700' ]">{{ distanceCheck ? 'Correct' : 'Wrong' }}</span>  
       <div>distance between is {{ distance }}km</div>
     </div>
-    <div class="[ absolute w-full h-full bg-white shadow-2xl flex flex-col justify-center items-center transition duration-300 text-2xl top-0 left-0 ]" :class="[ finished ? 'opacity-100' : 'opacity-0 pointer-events-none' ]">
+    <div class="[ absolute w-full h-full bg-white shadow-2xl flex flex-col justify-center items-center transition duration-300 text-2xl left-0 ] box" :class="[ finished ? 'opacity-100' : 'opacity-0 pointer-events-none' ]">
       finished
       <div> you found <span :class="[ amountOfCitis > 0 ? 'text-green-700' : 'text-red-700' ]">{{ amountOfCitis }}</span> cities</div>
       <div @click="start" class="[ text-xl font-bold text-gray-900 cursor-pointer px-4 py-2 mt-2 transition-all duration-300 hover:bg-gray-900 hover:text-white ]">Try Again?</div>
@@ -169,5 +169,8 @@ export default {
 .map {
   width: 100%;
   height: 400px;
+}
+.box {
+  top: 5%;
 }
 </style>
