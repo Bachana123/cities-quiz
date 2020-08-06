@@ -1,28 +1,34 @@
 <template>
-  <div class="[ container mx-auto text-center pt-10 relative ]">
-    <div :class="[ amountOfCitis > 0 ? 'text-green-700' : '' ]" class="[ text-xl ]"><span>{{ amountOfCitis }}</span> cities placed</div>
-    <div class="[ text-xl ]"><span :class="[ score < 1000 ? 'text-red-700' : '' ]">{{ score }}</span> kilometers left</div>
-    <div class="[ text-xl ]">Select the location of <div class="[ text-2xl font-bold ]">{{ currentCity }}</div></div>
-    <div class="[ mt-10 ]">
-      <gmap-map
-        ref="gMap"
-        class="map"
-        language="en"
-        :options="{fullscreenControl: false, styles: mapStyle}"
-        :zoom="6"
-        :center="center"
-        @click="getLatLng"
-      >
-      </gmap-map>
+  <div class="[ text-center relative h-full w-full ]">
+    <div class="[ absolute w-full h-full flex flex-col justify-center items-center bg-gray-800 text-4xl transition-all duration-300 text-white z-10 ]" :class="[ startingGame ? 'opacity-0 pointer-events-none' : 'opacity-100' ]">
+      City Quiz
+      <div @click="startGame" class="[ text-xl font-bold text-gray-300 cursor-pointer px-4 py-2 mt-2 transition-all duration-300 hover:bg-gray-900 hover:text-white ]">Play</div>
     </div>
-    <div v-if="distance > 0">
-      <span :class="[ distanceCheck ? 'text-green-600' : 'text-red-700' ]">{{ distanceCheck ? 'Correct' : 'Wrong' }}</span>  
-      <div>distance between is {{ distance }}km</div>
-    </div>
-    <div class="[ absolute w-full h-full bg-white shadow-2xl flex flex-col justify-center items-center transition duration-300 text-2xl left-0 ] box" :class="[ finished ? 'opacity-100' : 'opacity-0 pointer-events-none' ]">
-      finished
-      <div> you found <span :class="[ amountOfCitis > 0 ? 'text-green-700' : 'text-red-700' ]">{{ amountOfCitis }}</span> cities</div>
-      <div @click="start" class="[ text-xl font-bold text-gray-900 cursor-pointer px-4 py-2 mt-2 transition-all duration-300 hover:bg-gray-900 hover:text-white ]">Try Again?</div>
+    <div class="[ container mx-auto pt-10 relative ]">
+      <div :class="[ amountOfCitis > 0 ? 'text-green-700' : '' ]" class="[ text-xl ]"><span>{{ amountOfCitis }}</span> cities placed</div>
+      <div class="[ text-xl ]"><span :class="[ score < 1000 ? 'text-red-700' : '' ]">{{ score }}</span> kilometers left</div>
+      <div class="[ text-xl ]">Select the location of <div class="[ text-2xl font-bold ]">{{ currentCity }}</div></div>
+      <div class="[ mt-10 ]">
+        <gmap-map
+          ref="gMap"
+          class="map"
+          language="en"
+          :options="{fullscreenControl: false, styles: mapStyle}"
+          :zoom="6"
+          :center="center"
+          @click="getLatLng"
+        >
+        </gmap-map>
+      </div>
+      <div v-if="distance > 0">
+        <span :class="[ distanceCheck ? 'text-green-600' : 'text-red-700' ]">{{ distanceCheck ? 'Correct' : 'Wrong' }}</span>  
+        <div>distance between is {{ distance }}km</div>
+      </div>
+      <div class="[ absolute w-full h-full bg-white shadow-2xl flex flex-col justify-center items-center transition duration-300 text-2xl left-0 ] box" :class="[ finished ? 'opacity-100' : 'opacity-0 pointer-events-none' ]">
+        finished
+        <div> you found <span :class="[ amountOfCitis > 0 ? 'text-green-700' : 'text-red-700' ]">{{ amountOfCitis }}</span> cities</div>
+        <div @click="start" class="[ text-xl font-bold text-gray-900 cursor-pointer px-4 py-2 mt-2 transition-all duration-300 hover:bg-gray-900 hover:text-white ]">Try Again?</div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +40,7 @@ import { capitalCities } from '~/static/map/capitalCities.json'
 export default {
   data() {
     return {
+      startingGame: false,
       map: {},
       latLng: {},
       currentLatLng: {},
@@ -69,6 +76,9 @@ export default {
     }
   },
   methods: {
+    startGame() {
+      this.startingGame = true
+    },
     getLatLng(e) {
       var lat =  e.latLng.lat()
       var lng = e.latLng.lng()
