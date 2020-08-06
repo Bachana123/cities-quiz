@@ -35,6 +35,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    "@/plugins/google-maps"
   ],
   /*
   ** Auto import components
@@ -52,10 +53,6 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    ['nuxt-gmaps', {
-      key: 'AIzaSyAclDN9FMmWGi-PzRkaFcMeCq2c1yzdOPE',
-      //you can use libraries: ['places']
-    }]
   ],
   /*
   ** Build configuration

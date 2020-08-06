@@ -11,8 +11,8 @@
   "dependencies": {
     "css-loader": "^3.6.0",
     "nuxt": "^2.14.0",
-    "nuxt-gmaps": "^1.2.5",
-    "sass": "^1.26.5"
+    "sass": "^1.26.5",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.1.0",
