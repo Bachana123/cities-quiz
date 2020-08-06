@@ -1,0 +1,22 @@
+{
+  "name": "citiesquiz",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "css-loader": "^3.6.0",
+    "nuxt": "^2.14.0",
+    "nuxt-gmaps": "^1.2.5",
+    "sass": "^1.26.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^2.1.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.2"
+  }
+}
