@@ -157,12 +157,12 @@ export default {
     finish() {
       this.finished = true
       this.resetPins()
-      this.amountOfCitis = 0
       this.score = 1500
       this.distance = 0
     },
     start() {
       this.finished = false
+      this.amountOfCitis = 0
     }
   },
   watch: {
